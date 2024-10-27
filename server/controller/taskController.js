@@ -46,12 +46,38 @@ export const getSpecificTask=async(req,res)=>{
         res.status(500).json({err:error.message})
     }
 }
+
 //update the task
 export const updateTask=async(req,res)=>{
     try {
+        const {id}=req.params;
+        const {title}=req.body;
+        
+        const task=await Task.findById(id);
+        if(!task) return res.status(404).json({msg:"Task not found"});
+
+        const updatedTask=await Task.findByIdAndUpdate(id,
+            {title:title},
+            {new:true}
+        ).populate('taskOwner','userName');
+         
+        if(!updatedTask) return res.status(404).json({msg:"Task not updated"});
+        
+        res.status(200).json(updatedTask);
         
     } catch (error) {
         res.status(500).json({err:error.message})
     }
 }
 //delete the task
+export const deleteTask=async(req,res)=>{
+try {
+    const {id}=req.params;
+    const task=await Task.findByIdAndDelete(id);
+    if(!task) return res.status(404).json({msg:"Task not found"});
+
+    res.status(200).json({msg:"Task deleted"});
+} catch (error) {
+    res.status(500).json({err:error.message})
+}
+}
