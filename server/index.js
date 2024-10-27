@@ -7,6 +7,7 @@ import morgan from "morgan"
 import connectDb from './database/connect.js';
 import logger from "./utils/logger.js"
 import userRoute from './routes/userRoute.js'
+import taskRoute from './routes/taskRoute.js'
 //configuration
 dotenv.config();
 const app= express();
@@ -44,6 +45,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 //routes
 app.use('/api/user', userRoute)
+app.use('/api/user',taskRoute)
 //server
 
 

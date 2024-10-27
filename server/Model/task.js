@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const taskSchema = new mongoose.Schema({
     title:{
@@ -6,7 +6,7 @@ const taskSchema = new mongoose.Schema({
         required:true,
     },
     taskOwner:{
-        type:Schema.Types.ObjectId,ref:"User",
+        type:Schema.Types.String,ref:"User",
         required:true
     },
     

@@ -9,3 +9,17 @@
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/register\",\"status\":\"201\",\"responseTime\":\"538.489\"}","timestamp":"2024-10-27T09:58:56.842Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/login\",\"status\":\"500\",\"responseTime\":\"498.367\"}","timestamp":"2024-10-27T10:00:28.256Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/login\",\"status\":\"200\",\"responseTime\":\"385.851\"}","timestamp":"2024-10-27T10:00:59.149Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/login\",\"status\":\"200\",\"responseTime\":\"420.186\"}","timestamp":"2024-10-27T14:40:09.543Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/createTask/671e0ee022e45d197a1fbe05\",\"status\":\"500\",\"responseTime\":\"295.427\"}","timestamp":"2024-10-27T14:42:08.748Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/createTask/671e0ee022e45d197a1fbe05\",\"status\":\"201\",\"responseTime\":\"1342.364\"}","timestamp":"2024-10-27T14:42:37.175Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/createTask/671e0ee022e45d197a1fbe05\",\"status\":\"201\",\"responseTime\":\"763.486\"}","timestamp":"2024-10-27T14:43:33.401Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/user/getAllTasks\",\"status\":\"404\",\"responseTime\":\"1.952\"}","timestamp":"2024-10-27T14:46:38.490Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/user/getAllTasks\",\"status\":\"200\",\"responseTime\":\"1370.554\"}","timestamp":"2024-10-27T14:48:26.288Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/user/getTasks/671e515cfdf3c13a262c307d\",\"status\":\"404\",\"responseTime\":\"1.323\"}","timestamp":"2024-10-27T14:51:01.912Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/user/getTask/671e515cfdf3c13a262c307d\",\"status\":\"200\",\"responseTime\":\"1092.361\"}","timestamp":"2024-10-27T14:51:23.152Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"PUT\",\"url\":\"/api/user/getTask/671e515cfdf3c13a262c307d\",\"status\":\"404\",\"responseTime\":\"1.449\"}","timestamp":"2024-10-27T14:53:43.606Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"PUT\",\"url\":\"/api/user/updateTask/671e515cfdf3c13a262c307d\",\"status\":\"200\",\"responseTime\":\"938.689\"}","timestamp":"2024-10-27T14:54:15.021Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/user/getTask/671e515cfdf3c13a262c307d\",\"status\":\"200\",\"responseTime\":\"631.453\"}","timestamp":"2024-10-27T14:55:06.832Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"PUT\",\"url\":\"/api/user/updateTask/671e515cfdf3c13a262c307d\",\"status\":\"200\",\"responseTime\":\"914.151\"}","timestamp":"2024-10-27T14:57:07.045Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"DELETE\",\"url\":\"/api/user/deleteTask/671e515cfdf3c13a262c307d\",\"status\":\"200\",\"responseTime\":\"284.065\"}","timestamp":"2024-10-27T14:58:40.144Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/user/getAllTasks\",\"status\":\"200\",\"responseTime\":\"279.611\"}","timestamp":"2024-10-27T14:58:49.196Z"}
