@@ -6,7 +6,7 @@ import helmet from "helmet"
 import morgan from "morgan"
 import connectDb from './database/connect.js';
 import logger from "./utils/logger.js"
-
+import userRoute from './routes/userRoute.js'
 //configuration
 dotenv.config();
 const app= express();
@@ -42,11 +42,11 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-
+//routes
+app.use('/api/user', userRoute)
 //server
-app.use((req,res)=>{
-    res.send("Hello")
-})
+
+
 const server = () => {
     try {
         connectDb(process.env.MONGO_URL);

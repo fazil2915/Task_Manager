@@ -1,10 +1,12 @@
-import {User} from '../Model/user.js'
-
+import User from '../Model/user.js'
+import bcrypt from 'bcrypt'
+import jwt from "jsonwebtoken"
 
 //register
 export const register=async(req,res)=>{
     try {
         const{
+            userName,
             email,
             password
         }=req.body
@@ -12,6 +14,7 @@ export const register=async(req,res)=>{
         const hashedPassword=await bcrypt.hash(password,salt);
 
         const newTeacher=new User({
+        userName,    
         email,
         password:hashedPassword
         })

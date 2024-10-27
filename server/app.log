@@ -1,0 +1,11 @@
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/user/register\",\"status\":\"404\",\"responseTime\":\"1.216\"}","timestamp":"2024-10-27T09:53:36.779Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/register\",\"status\":\"500\",\"responseTime\":\"2.011\"}","timestamp":"2024-10-27T09:54:13.978Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/register\",\"status\":\"500\",\"responseTime\":\"73.938\"}","timestamp":"2024-10-27T09:55:48.116Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/register\",\"status\":\"500\",\"responseTime\":\"56.894\"}","timestamp":"2024-10-27T09:56:27.123Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/register\",\"status\":\"500\",\"responseTime\":\"56.810\"}","timestamp":"2024-10-27T09:57:27.604Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/register\",\"status\":\"500\",\"responseTime\":\"65.047\"}","timestamp":"2024-10-27T09:57:39.409Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/register\",\"status\":\"500\",\"responseTime\":\"78.318\"}","timestamp":"2024-10-27T09:58:03.414Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/register\",\"status\":\"500\",\"responseTime\":\"55.917\"}","timestamp":"2024-10-27T09:58:10.570Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/register\",\"status\":\"201\",\"responseTime\":\"538.489\"}","timestamp":"2024-10-27T09:58:56.842Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/login\",\"status\":\"500\",\"responseTime\":\"498.367\"}","timestamp":"2024-10-27T10:00:28.256Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/user/login\",\"status\":\"200\",\"responseTime\":\"385.851\"}","timestamp":"2024-10-27T10:00:59.149Z"}
