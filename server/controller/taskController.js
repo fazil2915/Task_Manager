@@ -5,7 +5,7 @@ import User from '../Model/user.js';
 export const createTask=async(req,res)=>{
 try {
     const {id}=req.params;
-    const {title}=req.body;
+    const {title,contents}=req.body;
     //check if the user exists
     const user=await User.findById(id);
     if(!user) return res.status(404).json({msg:"User not found"});
@@ -13,6 +13,7 @@ try {
 
     const newTask = new Task({
         title:title,
+        contents:contents,
         taskOwner:id
     })
     const savedTask=await newTask.save();
@@ -51,13 +52,13 @@ export const getSpecificTask=async(req,res)=>{
 export const updateTask=async(req,res)=>{
     try {
         const {id}=req.params;
-        const {title}=req.body;
+        const {title,contents}=req.body;
         
         const task=await Task.findById(id);
         if(!task) return res.status(404).json({msg:"Task not found"});
 
         const updatedTask=await Task.findByIdAndUpdate(id,
-            {title:title},
+            {title:title,contents:contents},
             {new:true}
         ).populate('taskOwner','userName');
          

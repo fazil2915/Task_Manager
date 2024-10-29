@@ -13,11 +13,11 @@ dotenv.config();
 const app= express();
 
 //cors
-// app.use(cors({
-//     origin: [process.env.frontend || 'http://localhost:5173'],  
-//     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],          
-//     credentials: true,        
-//   }))
+app.use(cors({
+    origin: [process.env.frontend || 'http://localhost:5173'],  
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],          
+    credentials: true,        
+  }))
 
 //logger
 const morganFormat = ":method :url :status :response-time ms";

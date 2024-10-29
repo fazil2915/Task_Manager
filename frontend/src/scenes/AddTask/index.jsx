@@ -1,53 +1,53 @@
 import React, { useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button } from '@mui/material';
 
-function EditNoteDialog({ open, onClose, note, onSubmit }) {
-  const [title, setTitle] = useState(note?.title || '');
-  const [subheader, setSubheader] = useState(note?.subheader || '');
-  const [description, setDescription] = useState(note?.description || '');
+function AddNoteDialog({ open, onClose, onSubmit }) {
+  const [newNote, setNewNote] = useState({ title: '', contents: '' });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewNote((prevNote) => ({ ...prevNote, [name]: value }));
+  };
 
   const handleSubmit = () => {
-    // Submit form data to parent component
-    onSubmit({ title, subheader, description });
-    onClose();
+    onSubmit(newNote);
+    setNewNote({ title: '', contents: '' });
   };
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Edit Note</DialogTitle>
+      <DialogTitle>Add a New Note</DialogTitle>
       <DialogContent>
         <TextField
-          fullWidth
+          autoFocus
+          margin="dense"
+          name="title"
           label="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          margin="dense"
+          type="text"
+          fullWidth
+          variant="outlined"
+          value={newNote.title}
+          onChange={handleChange}
         />
         <TextField
-          fullWidth
-          label="Subheader"
-          value={subheader}
-          onChange={(e) => setSubheader(e.target.value)}
           margin="dense"
-        />
-        <TextField
+          name="contents"
+          label="Contents"
+          type="text"
           fullWidth
-          label="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          variant="outlined"
           multiline
           rows={4}
-          margin="dense"
+          value={newNote.description}
+          onChange={handleChange}
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleSubmit} variant="contained" color="primary">
-          Save
-        </Button>
+        <Button onClick={onClose} >Cancel</Button>
+        <Button onClick={handleSubmit} color="primary">Add Note</Button>
       </DialogActions>
     </Dialog>
   );
 }
 
-export default EditNoteDialog;
+export default AddNoteDialog;

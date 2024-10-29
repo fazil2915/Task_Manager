@@ -8,10 +8,11 @@ import Typography from '@mui/material/Typography';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import PushPinRoundedIcon from '@mui/icons-material/PushPinRounded';
-
-export default function CardNote({ title, subheader, description, onPin, isPinned,onEdit }) {
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+export default function CardNote({ title, contents, onPin, isPinned,onEdit,onDelete,onClick }) {
   return (
-    <Card sx={{ maxWidth: 345, borderRadius: 4, backgroundColor: isPinned ? 'lightblue' : 'white', color: isPinned ? 'white' : 'black' }}>
+    <Card sx={{ maxWidth: 345, borderRadius: 4, backgroundColor: isPinned ? 'lightblue' : 'white', color: isPinned ? 'white' : 'black' 
+    }}    onClick={onClick}>
       <CardHeader
         action={
           <IconButton aria-label="settings">
@@ -19,12 +20,12 @@ export default function CardNote({ title, subheader, description, onPin, isPinne
           </IconButton>
         }
         title={title}
-        subheader={subheader}
+      
       />
       
       <CardContent>
         <Typography variant="body2" sx={{ color: isPinned ? 'white' : 'text.secondary' }}>
-          {description}
+          {contents}
         </Typography>
       </CardContent>
       
@@ -34,6 +35,10 @@ export default function CardNote({ title, subheader, description, onPin, isPinne
       <IconButton aria-label="edit" onClick={onEdit}>
         <EditRoundedIcon sx={{ color: "black" }} />
       </IconButton>
+      <IconButton aria-label="delete" onClick={onDelete}>
+      <DeleteRoundedIcon sx={{ color: "black" }} /> 
+      </IconButton>
+
     </Card>
   );
-}
+}                 

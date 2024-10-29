@@ -56,9 +56,9 @@ const Form = () => {
       formData.append(value, values[value]);
     }
 
-
+   
     const savedUserResponse = await fetch(
-      `${import.meta.env.VITE_BASE_URL}/api/teacher/register`,
+      `${import.meta.env.VITE_BASE_URL}/api/user/register`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -74,7 +74,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch(`${import.meta.env.VITE_BASE_URL}/api/teacher/login`, {
+    const loggedInResponse = await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -88,7 +88,7 @@ const Form = () => {
           token: loggedIn.token,
         })
       );
-      navigate("/dash");
+      navigate("/home");
     }
   };
 
