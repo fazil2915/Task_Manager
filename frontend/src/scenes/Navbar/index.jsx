@@ -54,7 +54,7 @@ const Navbar = () => {
             },
           }}
         >
-          Task Manager
+             TASK MANAGER
         </Typography>
       </FlexBetween>
 

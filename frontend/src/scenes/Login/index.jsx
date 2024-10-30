@@ -13,7 +13,7 @@ function Login() {
           fontSize="32px"
           color="primary"
         >
-          TASK MANAGENENT
+          TASK MANAGER
         </Typography>
       </Box>
       <Box
@@ -23,7 +23,7 @@ function Login() {
         borderRadius="1.5rem"
         backgroundColor={theme.palette.background.alt}>
         <Typography fontWeight="500" variant="h5" sx={{ mb: "1rem" }}>
-          Welcome to Admin Login
+          Welcome to Task Manager
         </Typography>
         <Form />
       </Box>
