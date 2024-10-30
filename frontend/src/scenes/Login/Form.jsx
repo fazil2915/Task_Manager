@@ -57,7 +57,6 @@ const Form = () => {
     // Check for response status
     if (!savedUserResponse.ok) {
       const errorResponse = await savedUserResponse.json();
-      console.error("Error response:", errorResponse);
 
       // Set errors based on backend response
       if (errorResponse.errors) {
@@ -84,7 +83,6 @@ const Form = () => {
     );
     if (!loggedInResponse.ok) {
       const errorResponse = await loggedInResponse.json();
-      console.error("Login error response:", errorResponse);
       onSubmitProps.setFieldError("general", errorResponse.message || "Login failed.");
       return;
     }
