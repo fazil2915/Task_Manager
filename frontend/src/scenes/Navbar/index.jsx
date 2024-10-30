@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   IconButton,
@@ -46,7 +46,7 @@ const Navbar = () => {
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
           color="primary"
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate("/home")}
           sx={{
             "&:hover": {
               color: lightBlue,
@@ -144,7 +144,7 @@ const Navbar = () => {
                 input={<InputBase />}
               >
                 <MenuItem value={user.userName}>
-                  <Typography>{user.userName || 'Guest'}</Typography> 
+                  <Typography>{user.userName || 'Guest'}</Typography>
                 </MenuItem>
                 <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
               </Select>

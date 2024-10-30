@@ -13,8 +13,7 @@ function AddButton({ onClick }) {
   return (
     <Box
       sx={{
-        // position: 'fixed',
-        // bottom: { xs: '1rem', sm: '2rem', md: '2rem' },
+
         left: { xs: '1rem', sm: '3rem', md: '6rem' },
         m: 2,
       }}
@@ -33,7 +32,7 @@ function AddButton({ onClick }) {
         <AddIcon />
       </Fab>
 
-      {/* Keyframes for rotation animation */}
+
       <style>
         {`
           @keyframes rotate {

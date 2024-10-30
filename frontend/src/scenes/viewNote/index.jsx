@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import React from 'react';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Typography, Button } from '@mui/material';
 
-function NoteDetailView({ note, onClose }) {
- 
-  
-
+function NoteDetailView({ note, open, onClose }) {
   return (
-    <Box sx={{ padding: 2 }}>
-      <Typography variant="h4" gutterBottom>
-        {note.title}
-      </Typography>
-      <Typography variant="body1">{note.contents}</Typography>
-      <Button variant="outlined" onClick={onClose} sx={{ marginTop: 2 }}>
-        Close
-      </Button>
-    </Box>
+    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+      <DialogTitle>{note.title}</DialogTitle>
+      <DialogContent dividers>
+        <Typography variant="body1">{note.contents}</Typography>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose} color="primary" variant="contained">
+          Close
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }
 

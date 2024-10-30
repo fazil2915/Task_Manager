@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -7,8 +6,6 @@ import {
   useMediaQuery,
   Typography,
   useTheme,
-  Menu,
-  MenuItem
 } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -16,12 +13,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "@/state";
 
-
 const registerSchema = yup.object().shape({
   userName: yup.string().required("required"),
   email: yup.string().email("invalid email").required("required"),
-  password: yup.string().required("required")
-
+  password: yup.string().required("required"),
 });
 
 const loginSchema = yup.object().shape({
@@ -32,7 +27,7 @@ const loginSchema = yup.object().shape({
 const initialValuesRegister = {
   userName: "",
   email: "",
-  password: ""
+  password: "",
 };
 
 const initialValuesLogin = {
@@ -50,13 +45,6 @@ const Form = () => {
   const isRegister = pageType === "register";
 
   const register = async (values, onSubmitProps) => {
-    // this allows us to send form info with image
-    const formData = new FormData();
-    for (let value in values) {
-      formData.append(value, values[value]);
-    }
-
-   
     const savedUserResponse = await fetch(
       `${import.meta.env.VITE_BASE_URL}/api/user/register`,
       {
@@ -65,31 +53,45 @@ const Form = () => {
         body: JSON.stringify(values),
       }
     );
-    const savedUser = await savedUserResponse.json();
-    onSubmitProps.resetForm();
 
-    if (savedUser) {
-      setPageType("login");
+    // Check for response status
+    if (!savedUserResponse.ok) {
+      const errorResponse = await savedUserResponse.json();
+      console.error("Error response:", errorResponse);
+
+      // Set errors based on backend response
+      if (errorResponse.errors) {
+        for (const field in errorResponse.errors) {
+          onSubmitProps.setFieldError(field, errorResponse.errors[field]);
+        }
+      } else {
+        onSubmitProps.setFieldError("general", "Email is already exist. Please try again.");
+      }
+      return;
     }
+    onSubmitProps.resetForm();
+    setPageType("login");
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
-    const loggedIn = await loggedInResponse.json();
-    onSubmitProps.resetForm();
-    if (loggedIn) {
-      dispatch(
-        setLogin({
-          user: loggedIn.user,
-          token: loggedIn.token,
-        })
-      );
-      navigate("/home");
+    const loggedInResponse = await fetch(
+      `${import.meta.env.VITE_BASE_URL}/api/user/login`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      }
+    );
+    if (!loggedInResponse.ok) {
+      const errorResponse = await loggedInResponse.json();
+      console.error("Login error response:", errorResponse);
+      onSubmitProps.setFieldError("general", errorResponse.message || "Login failed.");
+      return;
     }
+
+    const loggedIn = await loggedInResponse.json();
+    dispatch(setLogin({ user: loggedIn.user, token: loggedIn.token }));
+    navigate("/home");
   };
 
   const handleFormSubmit = async (values, onSubmitProps) => {
@@ -127,16 +129,14 @@ const Form = () => {
                   label="UserName"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.name}
+                  value={values.userName}  // Fix here
                   name="userName"
-                  error={
-                    Boolean(touched.name) && Boolean(errors.name)
-                  }
-                  helperText={touched.name && errors.name}
+                  error={Boolean(touched.userName) && Boolean(errors.userName)}  // Fix here
+                  helperText={touched.userName && errors.userName}
                   sx={{ gridColumn: "span 4" }}
                 />
                 <TextField
-                  label="email"
+                  label="Email"
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.email}
@@ -145,47 +145,54 @@ const Form = () => {
                   helperText={touched.email && errors.email}
                   sx={{ gridColumn: "span 4" }}
                 />
-               
+                {errors.general && (
+                  <Typography color="error" sx={{ display: "block", whiteSpace: 'nowrap' }}>
+                    {errors.general}
+                  </Typography>
+                )}
                 <TextField
-                  label="password"
+                  label="Password"
                   type="password"
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.password}
                   name="password"
-                  error={
-                    Boolean(touched.password) && Boolean(errors.password)
-                  }
+                  error={Boolean(touched.password) && Boolean(errors.password)}
                   helperText={touched.password && errors.password}
                   sx={{ gridColumn: "span 4" }}
                 />
               </>
             )}
-           {isLogin && (
-            <>
-            <TextField
-              label="Email"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.email}
-              name="email"
-              error={Boolean(touched.email) && Boolean(errors.email)}
-              helperText={touched.email && errors.email}
-              sx={{ gridColumn: "span 4" }}
-            />
-            <TextField
-              label="Password"
-              type="password"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.password}
-              name="password"
-              error={Boolean(touched.password) && Boolean(errors.password)}
-              helperText={touched.password && errors.password}
-              sx={{ gridColumn: "span 4" }}
-            />
-            </>
-          )} 
+            {isLogin && (
+              <>
+                <TextField
+                  label="Email"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.email}
+                  name="email"
+                  error={Boolean(touched.email) && Boolean(errors.email)}
+                  helperText={touched.email && errors.email}
+                  sx={{ gridColumn: "span 4" }}
+                />
+                <TextField
+                  label="Password"
+                  type="password"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.password}
+                  name="password"
+                  error={Boolean(touched.password) && Boolean(errors.password)}
+                  helperText={touched.password && errors.password}
+                  sx={{ gridColumn: "span 4" }}
+                />
+                {errors.general && (
+                  <Typography color="error" sx={{ display: "block", whiteSpace: 'nowrap' }}>
+                    {errors.general}
+                  </Typography>
+                )}
+              </>
+            )}
           </Box>
 
           {/* BUTTONS */}

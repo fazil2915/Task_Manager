@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AddButton from '@/components/AddButton';
 import { Typography, Box, Grid, Pagination, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from '@mui/material';
 import CardNote from '@/components/CardNote';
-import EditNoteDialog from '@/scenes/AddTask';
+import EditNoteDialog from '@/scenes/EditTask';
 import AddNoteDialog from '@/scenes/AddTask';
 import { useSelector } from 'react-redux';
 import NoteDetailView from '@/scenes/viewNote';
@@ -28,7 +28,7 @@ function NotesPage() {
 
   const fetchAllNotes = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/getAllTasks`, {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/getAllTasks/${user._id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -62,6 +62,15 @@ function NotesPage() {
     } catch (error) {
       console.error("Error fetching note:", error);
     }
+  };
+
+  //pin handler
+  const togglePin = (noteId) => {
+    setNotesData((prevNotes) =>
+      prevNotes.map((note) =>
+        note._id === noteId ? { ...note, isPinned: !note.isPinned } : note
+      )
+    );
   };
 
   const handleChangePage = (event, value) => setPage(value);
@@ -101,6 +110,7 @@ function NotesPage() {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(updatedNote),
       });
@@ -154,9 +164,11 @@ function NotesPage() {
 
       <Grid container spacing={2} justifyContent="center">
         {displayedNotes.map((note, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={12} sm={6} md={2} key={index}>
             <CardNote
               title={note.title}
+              onPin={() => togglePin(note._id)}
+              isPinned={note.isPinned}
               contents={note.contents}
               onEdit={() => handleEditClick(note)}
               onDelete={() => handleDeleteClick(note)}
@@ -190,6 +202,7 @@ function NotesPage() {
         <NoteDetailView
           note={selectedNote}
           onClose={() => setDetailViewOpen(false)}
+          open={detailViewOpen}
         />
       )}
 
