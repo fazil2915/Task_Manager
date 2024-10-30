@@ -1,12 +1,14 @@
 # Task Manager
 This project is a RESTful API service for an e-commerce platform, built using Node.js, Express.js, and PostgreSQL. It provides a robust backend solution for managing sellers and buyers in the e-commerce platform.
-## Features
-* AUTHENTICATION
-* PRODUCT MANAGEMENT
-* CART MANAGEMENT
+## End Points
+* /api/user/createTask/:id : Creates a new task for the specified user.
+* /api/user/getAllTasks : Retrieves all tasks for the authenticated user.
+* /api/user/getTask/:id : Fetches a specific task by its ID for the authenticated user.
+* /api/user/updateTask/:id : Updates details of an existing task for the authenticated user.
+* /api/user/deleteTask/:id : Deletes a specific task by ID for the authenticated user.
 
 ## Api Documentation
-All complete details have covered in this link [Details](https://documenter.getpostman.com/view/25678286/2sAXqp7iGi).
+All complete details have covered in this link [Details](https://documenter.getpostman.com/view/25678286/2sAY4vgN4A).
 
 ## Technologies Used
 > Frontend: React.js, Material-UI for a dynamic and user-friendly interface.
